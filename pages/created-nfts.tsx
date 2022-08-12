@@ -1,6 +1,7 @@
+import { NextPage } from 'next';
 import React from 'react';
 
-const CreatedNFTs = () => (
+const CreatedNFTs: NextPage = () => (
   <div>CreatedNFTs</div>
 );
 
