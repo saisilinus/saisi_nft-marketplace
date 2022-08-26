@@ -19,6 +19,16 @@ module.exports = {
     'react',
     '@typescript-eslint',
   ],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
+  globals: {
+    JSX: true,
+  },
   rules: {
     'no-console': 0,
     'jsx-a11y/label-has-associated-control': 0,

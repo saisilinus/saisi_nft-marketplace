@@ -9,6 +9,10 @@
    background: linear-gradient(101.12deg, #EB1484 27.35%, #C91CC3 99.99%, #C81CC5 100%, #C81CC5 100%);
 }
 
+.techive-nft-gradient {
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(64,75,59,1) 30%, rgba(250,234,44,1) 100%);
+}
+
 .white-bg {
     background: rgba(255, 255, 255, 0.2);
 }
