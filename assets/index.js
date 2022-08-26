@@ -39,6 +39,12 @@ import loader from './loader.gif';
 import spinner from './spinner.gif';
 import arrow from './arrow.png';
 import techiveLogo from './techive_logo.png';
+import avatar1 from './avatar1.jpg';
+import avatar2 from './avatar2.jpg';
+import avatar3 from './avatar3.png';
+import avatar4 from './avatar4.jpg';
+import avatar5 from './avatar5.png';
+import avatar6 from './avatar6.jpg';
 
 export default {
   heartOutline,
@@ -82,4 +88,10 @@ export default {
   spinner,
   arrow,
   techiveLogo,
+  avatar1,
+  avatar2,
+  avatar3,
+  avatar4,
+  avatar5,
+  avatar6,
 };

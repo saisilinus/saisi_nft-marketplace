@@ -128,7 +128,7 @@ const Home: NextPage = () => {
                         <CreatorCard
                           key={creator.seller}
                           rank={i + 1}
-                          creatorImage={images[`creator${i + 1}` as keyof typeof images]}
+                          creatorImage={images[`avatar${i + 1}` as keyof typeof images]}
                           creatorName={shortenAddress(creator.seller)}
                           creatorEths={creator.sum}
                         />
