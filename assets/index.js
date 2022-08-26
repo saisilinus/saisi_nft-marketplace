@@ -36,7 +36,9 @@ import right from './right.png';
 import left from './left.png';
 import headerbg from './headerbg.png';
 import loader from './loader.gif';
+import spinner from './spinner.gif';
 import arrow from './arrow.png';
+import techiveLogo from './techive_logo.png';
 
 export default {
   heartOutline,
@@ -77,5 +79,7 @@ export default {
   left,
   headerbg,
   loader,
+  spinner,
   arrow,
+  techiveLogo,
 };

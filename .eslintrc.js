@@ -26,6 +26,9 @@ module.exports = {
       },
     },
   },
+  globals: {
+    JSX: true,
+  },
   rules: {
     'no-console': 0,
     'jsx-a11y/label-has-associated-control': 0,

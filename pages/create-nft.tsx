@@ -1,20 +1,31 @@
 import { NextPage } from 'next';
-import React, { useState, useMemo, useCallback, useContext } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { useDropzone } from 'react-dropzone';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
-import { Button, Input } from '../components';
+import { Button, Input, Loader } from '../components';
 import images from '../assets';
+import { useCurrentNFTContext } from '../context/NFTContext';
+
+export interface IFormInput {
+  price: string;
+  name: string;
+  description: string;
+}
 
 const CreateNFT: NextPage = () => {
+  const { uploadToIPFS, createNFT, isLoadingNFT } = useCurrentNFTContext();
   const { theme } = useTheme();
-  const [fileUrl, setFileUrl] = useState<string | null>(null);
-  const [formInput, setFormInput] = useState({ price: '', name: '', description: '' });
+  const [fileUrl, setFileUrl] = useState<string>('');
+  const [formInput, setFormInput] = useState<IFormInput>({ price: '', name: '', description: '' });
+  const router = useRouter();
 
-  const onDrop = useCallback(() => {
-    // upload image to the blockchain (ipfs)
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
+    const url = await uploadToIPFS(acceptedFiles[0]);
+
+    setFileUrl(url as string);
   }, []);
 
   const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
@@ -30,6 +41,14 @@ const CreateNFT: NextPage = () => {
     ${isDragReject && 'border-file-reject'}
     `
   ), [isDragActive, isDragAccept, isDragReject]);
+
+  if (isLoadingNFT) {
+    return (
+      <div className="flex-start min-h-screen">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className="flex justify-center sm:px-4 p-12">
@@ -99,7 +118,7 @@ const CreateNFT: NextPage = () => {
           <Button
             btnName="Create NFT"
             classStyles="rounded-xl"
-            handleClick={() => {}}
+            handleClick={() => createNFT(formInput, fileUrl, router)}
           />
         </div>
       </div>
