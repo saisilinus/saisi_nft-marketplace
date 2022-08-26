@@ -35,6 +35,7 @@ export interface IFormattedNFT {
 }
 
 const projectSubdomain = validateEnv('IPFS Project Subdomain', process.env.NEXT_PUBLIC_IPFS_SUBDOMAIN);
+const rpcUrl = validateEnv('Alchemy Polygon Testnet RPC url', process.env.NEXT_PUBLIC_ALCHEMY_API_URL);
 
 const projectId = validateEnv('IPFS Project Id', process.env.NEXT_PUBLIC_IPFS_PROJECT_ID);
 const projectSecret = validateEnv('IPFS Project API secret key', process.env.NEXT_PUBLIC_IPFS_API_KEY);
@@ -71,7 +72,7 @@ interface NFTContextInterface {
 export const [useCurrentNFTContext, NFTContextProvider] = createCtx<NFTContextInterface>();
 
 export const NFTProvider = ({ children }: { children: React.ReactNode }) => {
-  const nftCurrency = 'ETH';
+  const nftCurrency = 'MATIC';
   const [currentAccount, setCurrentAccount] = useState('');
   const [isLoadingNFT, setIsLoadingNFT] = useState(false);
 
@@ -157,7 +158,7 @@ export const NFTProvider = ({ children }: { children: React.ReactNode }) => {
   const fetchNFTs = async (): Promise<IFormattedNFT[]> => {
     setIsLoadingNFT(false);
 
-    const provider = new ethers.providers.JsonRpcProvider();
+    const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
     const contract = fetchContract(provider);
 
     const data = await contract.fetchMarketItems();
