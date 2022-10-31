@@ -1,13 +1,58 @@
 # NFT Marketplace Project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+## Installation
 
-Try running some of the following tasks:
+Clone the repo:
 
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+```bash
+git clone https://github.com/saisilinus/saisi_nft-marketplace.git
+cd saisi_nft-marketplace
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Set the environment variables:
+
+```bash
+cp .env.example .env
+
+# open .env and modify the environment variables
+```
+
+Set up .secret:
+
+```bash
+cp .secret.example .secret
+
+# open .secret and add your private key
+```
+
+Change hardhat network configuration:
+
+- [ ] Open hardhat.config.js
+- [ ] Change networks.polygon_mumbai.url to your Alchemy API URL
+
+Deploy the smart contract:
+
+```bash
+
+npm run deploy:polygon
+```
+
+## Commands
+
+Running locally:
+
+```bash
+npm run dev
+```
+
+Running in production:
+
+```bash
+npm run start
 ```
